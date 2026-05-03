@@ -78,10 +78,10 @@ void setup() {
   config.fb_count     = 1;
 
   if (esp_camera_init(&config) != ESP_OK) {
-    Serial.println("❌ Camera init failed!");
+    Serial.println(" Camera init failed!");
     return;
   }
-  Serial.println("✅ Camera OK!");
+  Serial.println(" Camera OK!");
 
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) { delay(500); Serial.print("."); }
@@ -90,4 +90,7 @@ void setup() {
   startCameraServer();
 }
 
-void loop() { delay(1); }
+void loop()
+{ 
+  delay(1);
+}
