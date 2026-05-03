@@ -51,7 +51,7 @@ void setup() {
 
   Wire.begin(21, 22);
   if (!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
-    Serial.println("OLED না পাওয়া গেছে!");
+    Serial.println("OLED not found!");
   }
   display.clearDisplay();
   display.setTextSize(1);
