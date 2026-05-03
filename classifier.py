@@ -13,7 +13,7 @@ class WasteClassifier:
         self.model = models.mobilenet_v2(weights=MobileNet_V2_Weights.IMAGENET1K_V1)
         self.model.classifier[1] = torch.nn.Linear(1280, len(CATEGORIES))
         self.model.load_state_dict(torch.load(model_path, map_location=self.device))
-        print("✅ Model loaded!")
+        print(" Model loaded!")
 
         self.model.to(self.device)
         self.model.eval()
