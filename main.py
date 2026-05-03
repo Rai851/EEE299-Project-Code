@@ -3,7 +3,7 @@ import requests
 import time
 from classifier import WasteClassifier
 
-ESP32_CTRL_URL = "http://10.112.63.98:8080/open"  # ✅ তোমার IP
+ESP32_CTRL_URL = "http://10.112.63.98:8080/open"  
 
 CATEGORIES = ['metal', 'paper', 'plastic']
 
@@ -12,22 +12,22 @@ classifier = WasteClassifier()
 def send_command(category):
     try:
         requests.get(f"{ESP32_CTRL_URL}/{category}", timeout=3)
-        print(f"✅ OPEN {category.upper()} bin")
+        print(f"OPEN {category.upper()} bin")
     except Exception as e:
-        print(f"❌ Error: {e}")
+        print(f" Error: {e}")
 
 def main():
     cap = cv2.VideoCapture("http://10.112.63.190/stream")
 
     if not cap.isOpened():
-        print("❌ Can't open Camera!")
+        print(" Can't open Camera!")
         return
 
     last_prediction = None
     last_sent_time  = 0
     COOLDOWN = 5
 
-    print("🚀 Smart Dustbin Running... Press Q to close")
+    print("Smart Dustbin Running... Press Q to close")
 
     while True:
         ret, frame = cap.read()
