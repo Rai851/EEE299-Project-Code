@@ -5,7 +5,7 @@ from torchvision.models import MobileNet_V2_Weights
 
 CATEGORIES = ['metal', 'paper', 'plastic']
 
-# Data Augmentation বাড়ানো হয়েছে
+
 train_transform = transforms.Compose([
     transforms.Resize((224, 224)),
     transforms.RandomHorizontalFlip(),
@@ -39,7 +39,7 @@ scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=5, gamma=0.5)
 criterion = torch.nn.CrossEntropyLoss()
 
 best_acc = 0
-print("🚀 Training শুরু হচ্ছে...")
+print(" Training starting...")
 
 for epoch in range(30):  # 30 epoch
     # Training
@@ -80,10 +80,10 @@ for epoch in range(30):  # 30 epoch
 
     print(f"Epoch {epoch+1}/30 — Loss: {total_loss:.2f} — Train: {train_acc:.1f}% — Val: {val_acc:.1f}%")
 
-    # সবচেয়ে ভালো model save করো
+     
     if val_acc > best_acc:
         best_acc = val_acc
         torch.save(model.state_dict(), "waste_model.pth")
-        print(f"💾 Best model saved! Val Accuracy: {val_acc:.1f}%")
+        print(f" Best model saved! Val Accuracy: {val_acc:.1f}%")
 
-print(f"✅ Training শেষ! Best Accuracy: {best_acc:.1f}%")
+print(f" Training finished! Best Accuracy: {best_acc:.1f}%")
